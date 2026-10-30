@@ -1,3 +1,5 @@
+I decided to share a repo for those two programm since they share a lot of code but still required some work to go from one to the other, but they are still independant from one to each other you can only download one if you want.
+
 facial_recognition :</br>
   - face_landmarker.task : google's model to create a face_mesh</br>
   - landmarks.npy : dataset where all the face_mesh are stored</br>

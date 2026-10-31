@@ -2,8 +2,11 @@ I decided to share a repo for those two programm since they share a lot of code 
 
 facial_recognition :</br>
 &emsp;&emsp;&emsp;- face_landmarker.task : google's model to create a face_mesh</br>
+
 &emsp;&emsp;&emsp;- landmarks.npy : dataset where all the face_mesh are stored</br>
+
 &emsp;&emsp;&emsp;- signification.npy : dataset where all the signification for the model are stored 0 for happy and 1 for sad</br>
+
 &emsp;&emsp;&emsp;-> landmarks.npy and signification.npy are preloaded with a dataset I created from my face, you can delete them and camera.py will create new ones</br>
 &emsp;&emsp;&emsp;- camera.py : used to add to the dataset by pressing 1 for happy and 2 for sad on the keyboard (not the numpad)  and by making the coresponding face, only save face mesh not the images.</br>
 &emsp;&emsp;&emsp;- model_trainer.py : trains a model on the dataset created by camera.py using pytorch and save the model parameters and other things to modelparam. you can quit and resume the programm and it will save it whenever there is a new best on the test dataset.

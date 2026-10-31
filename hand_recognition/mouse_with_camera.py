@@ -41,32 +41,38 @@ while True:
 			
 			prediction=getoutput(model, torch.from_numpy(pos_model))
 
-			camera.draw_text(str(prediction))
-
-			if prediction == 0:
-				if mouseright:
-					pyautogui.mouseUp(button='right')
-					mouseright = False
-				if mouseleft:
-					pyautogui.mouseUp(button='left')
-					mouseleft = False
-				
-
-				mouse.move(int(result.hand_landmarks[0][0].x*WINDOW_WIDTH-700), int(result.hand_landmarks[0][0].y*WINDOW_HEIGHT-700))
-				
-
-			elif prediction == 2:
-				pyautogui.mouseDown(button='right')
-				mouseright = True
-			elif prediction == 1:
-				pyautogui.mouseDown(button='left')
-				mouseleft = True
-				
 			
 
-			#1 boule
-			#2 main plate doight écarté
-			#3 index pointé
+			match prediction:
+				case 0:
+					text_draw = "clenched fist / main en poing"
+				case 1:
+					text_draw = "flat hand / main à plat"
+				case 2:
+					text_draw = "index finger pointing up / index qui pointe vers le haut"
+
+			camera.draw_text(text_draw)
+
+			match prediction:
+				case 0:
+					if mouseright:
+						pyautogui.mouseUp(button='right')
+						mouseright = False
+					if mouseleft:
+						pyautogui.mouseUp(button='left')
+						mouseleft = False
+				
+					mouse.move(int(result.hand_landmarks[0][0].x*WINDOW_WIDTH-700), int(result.hand_landmarks[0][0].y*WINDOW_HEIGHT-700))
+
+
+				case 1:
+					pyautogui.mouseDown(button='left')
+					mouseleft = True
+					
+				case 2:
+					pyautogui.mouseDown(button='right')
+					mouseright = True			
+				
 
 
 	camera.show_frame()

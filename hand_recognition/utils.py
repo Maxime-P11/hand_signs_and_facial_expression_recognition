@@ -165,7 +165,7 @@ class Camera:
 		self.frame = display(all_pos, z_all, self.frame)
 
 	def draw_text(self, text:str, color = (255, 0, 0)):
-		self.frame = cv2.putText(self.frame, text, (40, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2)
+		self.frame = cv2.putText(self.frame, text, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
 	def show_frame(self, title="frame"):
 		cv2.imshow(title, self.frame)

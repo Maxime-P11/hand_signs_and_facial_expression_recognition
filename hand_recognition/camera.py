@@ -43,7 +43,7 @@ while True:
 
 			pos_model = normalize_landmarks(pos_model)
 			key = cv2.waitKey(1)
-			if 49<=key<=51:
+			if 49<=key<=51: #key 1 to 3 on the keyboard (not numpad)
 
 				all_data = np.append(all_data, pos_model)
 				all_signification = np.append(all_signification, key-49)

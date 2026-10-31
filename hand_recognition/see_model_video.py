@@ -29,11 +29,19 @@ while True:
 			all_pos, z_all, pos_model = get_list_data_hand_landmark(result.hand_landmarks[0], camera.get_width(), camera.get_height())
 			camera.draw_hand_landmark(all_pos, z_all)
 			pos_model = normalize_landmarks(pos_model)
-			prediction=getoutput(model, torch.from_numpy(pos_model))
-			camera.draw_text(str(prediction))
-			#1 hand closed
-			#2 hand flat
-			#3 index pointed
+			prediction = getoutput(model, torch.from_numpy(pos_model))
+
+			
+			match prediction:
+				case 0:
+					text_draw = "clenched fist / main en poing"
+				case 1:
+					text_draw = "flat hand / main à plat"
+				case 2:
+					text_draw = "index finger pointing up / index qui pointe vers le haut"
+
+			
+			camera.draw_text(text_draw)
 
 	# display frame
 	camera.show_frame()
